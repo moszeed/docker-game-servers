@@ -1,0 +1,18 @@
+FROM ubuntu:15.10
+
+COPY . /steam_cmd
+WORKDIR /steam_cmd
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y lib32gcc1 wget && \
+    useradd -m steam && \
+    su - steam && \
+    mkdir ~/steamcmd && \
+    cd ~/steamcmd && \
+    wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz && \
+    tar -xvzf steamcmd_linux.tar.gz && \
+    cd ~/steamcmd && \
+    ./steamcmd.sh +quit
+
+CMD ["~/steamcmd.sh"]
