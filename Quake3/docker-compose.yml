@@ -1,0 +1,25 @@
+version: '2'
+services:
+
+  dedicated:
+    image: jberrenberg/quake3
+    hostname: quake3
+    container_name: q3a
+    ports   :
+      - 27960:27960/udp
+    volumes:
+      - ./pak0.pk3:/home/ioq3srv/ioquake3/baseq3/pak0.pk3
+      - ./configs/server.cfg:/home/ioq3srv/ioquake3/baseq3/webnexx-server.cfg
+    command: +exec webnexx-server.cfg
+
+  instagib:
+    image: jberrenberg/quake3
+    hostname: quake3
+    container_name: q3ainstagib
+    ports   :
+      - 27960:27960/udp
+    volumes:
+      - ./pak0.pk3:/home/ioq3srv/ioquake3/baseq3/pak0.pk3
+      - ./mods/instagibplus/:/home/ioq3srv/ioquake3/instagibplus/
+      - ./configs/server-instagib.cfg:/home/ioq3srv/ioquake3/instagibplus/server-instagib.cfg
+    command: +set fs_game instagibplus +exec server-instagib.cfg

@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  dedicated:
+    image: luzifer/tf2-server
+    hostname: tf2
+    ports   :
+      - 27015:27015
+      - 27015:27015/udp
+    container_name: tf2
+    volumes:
+      - ./server.cfg:/home/tf2/hlserver/tf2/tf/cfg/server.cfg
+    command: +map mvm_bigrock +maxplayers 32
+    stdin_open: true
+    tty: true
+
+

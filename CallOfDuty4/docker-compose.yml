@@ -1,0 +1,38 @@
+version: '2'
+services:
+
+  dedicated:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cod4lnx
+    hostname: cod4
+    container_name: cod4
+    ports   :
+      - 28960:28960
+      - 28960:28960/udp
+    volumes:
+      - ./configs/server.cfg:/home/cod4/main/server.cfg
+    command: ./cod4_lnxded +set dedicated 1 +sv_pure 1 +exec server.cfg +map_rotate +set net_ip schiessbude +set net_port 28960
+
+  promod:
+    image: cod4lnx
+    hostname: cod4pro
+    container_name: cod4pro
+    ports   :
+      - 28960:28960
+      - 28960:28960/udp
+    volumes:
+      - ./configs/serverProMod.cfg:/home/cod4/main/server.cfg
+    command: ./cod4_lnxded +set dedicated 1 +sv_pure 1 +set fs_game mods/pml220 +exec server.cfg +map_rotate +set net_ip schiessbude +set net_port 28960
+
+  modwarfare:
+    image: cod4lnx
+    hostname: cod4mod
+    container_name: cod4mod
+    ports   :
+      - 28960:28960
+      - 28960:28960/udp
+    volumes:
+      - ./configs/server.cfg:/home/cod4/main/server.cfg
+    command: ./cod4_lnxded +set dedicated 1 +sv_pure 1 +set fs_game mods/ModWarfare +exec server.cfg +map_rotate +set net_ip schiessbude +set net_port 28960

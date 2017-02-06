@@ -1,0 +1,1 @@
+quake3.exe +set dedicated 2 +set vm_game 2 +set fs_game instagibplus +set instagib 11 +bot_enable 0 +set sv_maxclients 12 +set sv_hostname "InstagibPlus Server" +fraglimit 40 +set g_motd "InstaGibPlus (The Other White Meat)" +exec igplus.config +exec maplist.config 

@@ -1,0 +1,16 @@
+version: '2'
+services:
+
+  dedicated:
+    image: foxylion/steam-css
+    hostname: css
+    container_name: css
+    ports   :
+      - 27016:27015
+      - 27016:27015/udp
+      - 1200:1200
+      - 27005:27005/udp
+      - 27020:27020/udp
+      - 26901:26901/udp
+
+
